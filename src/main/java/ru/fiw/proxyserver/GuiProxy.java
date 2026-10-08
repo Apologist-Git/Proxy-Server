@@ -117,8 +117,12 @@ public class GuiProxy extends GuiScreen {
     protected void keyTyped(char c, int k) throws IOException {
         super.keyTyped(c, k);
         this.ipPort.textboxKeyTyped(c, k);
-        this.username.textboxKeyTyped(c, k);
-        this.password.textboxKeyTyped(c, k);
+        if (socks5.isChecked()) {
+            this.username.textboxKeyTyped(c, k);
+            this.password.textboxKeyTyped(c, k);
+        } else {
+            this.userID.textboxKeyTyped(c, k);
+        }
         msg = "";
         testPing.state = "";
     }
@@ -127,8 +131,12 @@ public class GuiProxy extends GuiScreen {
     protected void mouseClicked(int x, int y, int b) throws IOException {
         super.mouseClicked(x, y, b);
         this.ipPort.mouseClicked(x, y, b);
-        this.username.mouseClicked(x, y, b);
-        this.password.mouseClicked(x, y, b);
+        if (socks5.isChecked()) {
+            this.username.mouseClicked(x, y, b);
+            this.password.mouseClicked(x, y, b);
+        } else {
+            this.userID.mouseClicked(x, y, b);
+        }
     }
 
     @Override
